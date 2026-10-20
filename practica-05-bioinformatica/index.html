@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Práctica 05 · Laboratorio Bioinformático de Cultivo (Tulipán)</title>
+  <title>Practica 05 · Laboratorio Bioinformatico de Cultivo (Tulipán)</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script type="importmap">
@@ -15,7 +15,7 @@
   <!-- PANEL IZQUIERDO: especie, modelo, parámetros genéticos y ambientales -->
   <aside id="panelIzq" class="panel">
     <header class="cab">
-      <div><b>🌷 Lab Bioinformático</b><small>P05 · Cultivo de Tulipán</small></div>
+      <div><b>🌷 Lab Bioinformatico MFGG</b><small>P05 · Cultivo de Tulipán</small></div>
       <span id="badgeDb" class="badge">…</span>
     </header>
 
@@ -24,17 +24,17 @@
       <button data-esc="B" hidden>Escenario B</button>
     </div>
 
-    <label class="campo">Especie (catálogo MySQL)<select id="selEspecie"></select></label>
+    <label class="campo">Especie (catalogo MySQL)<select id="selEspecie"></select></label>
     <label class="campo">Modelo matemático de crecimiento<select id="selModelo"></select></label>
 
-    <h4 id="tituloParams">Parámetros genéticos y ambientales (A)</h4>
+    <h4 id="tituloParams">Parametros geneticos y ambientales (A)</h4>
     <div id="sliders"></div>
-    <label class="chk"><input type="checkbox" id="chkTermo" checked> Termostato por fase (cálido → frío → templado)</label>
+    <label class="chk"><input type="checkbox" id="chkTermo" checked> Termostato por fase (calido → frio → templado)</label>
 
-    <h4>Simulación</h4>
+    <h4>Simulacion</h4>
     <div id="slidersGlobales"></div>
     <label class="chk ab"><input type="checkbox" id="chkAB"> Activar comparativa A/B (A vs B)</label>
-    <label class="chk"><input type="checkbox" id="chkCorte"> Corte de maceta (ver bulbo y raíces)</label>
+    <label class="chk"><input type="checkbox" id="chkCorte"> Corte de maceta (ver bulbo y raices)</label>
 
     <div class="botones">
       <button id="btnPausa" class="verde">⏸ Pausar</button>
@@ -42,20 +42,20 @@
       <button id="btnGuardar" class="azul">💾 Guardar en MySQL</button>
       <button id="btnReportes" class="violeta">📊 Reportes / Historial</button>
       <button id="btnCaptura" class="gris">📷 Captura PNG</button>
-      <button id="btnCamara" class="gris">🎥 Restablecer cámara</button>
+      <button id="btnCamara" class="gris">🎥 Restablecer camara</button>
     </div>
   </aside>
 
-  <!-- PANEL DERECHO: KPIs, estrés, decisiones, gráfica, A/B, parte seleccionada -->
+  <!-- PANEL DERECHO: KPIs, estres, decisiones, grafica, A/B, parte seleccionada -->
   <aside id="panelDer" class="panel">
     <div class="faseTag"><span id="faseNombre">—</span><small id="escVista">Escenario A</small></div>
     <div class="kpis">
-      <div><small>Día</small><b id="kDia">0</b></div>
+      <div><small>Dia</small><b id="kDia">0</b></div>
       <div><small>Altura (u)</small><b id="kAlt">0</b></div>
       <div><small>Biomasa (g)</small><b id="kBio">0</b></div>
       <div><small>Hojas / Bulbillos</small><b id="kHojas">0 / 0</b></div>
       <div><small>ICR (g/g·día)</small><b id="kIcr">0</b></div>
-      <div><small>Días a cosecha</small><b id="kCos">—</b></div>
+      <div><small>Dias a cosecha</small><b id="kCos">—</b></div>
     </div>
 
     <div id="barras"></div>
@@ -67,19 +67,19 @@
     </section>
 
     <section id="boxAB" hidden>
-      <h5>⚖️ Comparativa A/B <small>(proyección a fin de ciclo)</small></h5>
+      <h5>⚖️ Comparativa A/B <small>(proyeccion a fin de ciclo)</small></h5>
       <table class="mini" id="tablaAB"></table>
       <div id="ganadorAB" class="ganador"></div>
     </section>
 
     <section>
-      <h5>📈 Curvas de crecimiento y estrés</h5>
+      <h5>📈 Curvas de crecimiento y estres</h5>
       <div class="graf"><canvas id="grafica"></canvas></div>
     </section>
 
     <section id="boxParte">
       <h5>🔎 Parte seleccionada</h5>
-      <p id="parteVacio" class="suave">Haz clic en una hoja, el tallo, la flor, el bulbo o la maceta.</p>
+      <p id="parteVacio" class="suave">Haz clic en una hoja, el tallo, la flor, el bulbo o la maceta :).</p>
       <div id="parteDatos" hidden></div>
     </section>
 
@@ -89,10 +89,10 @@
     </section>
   </aside>
 
-  <!-- LÍNEA DE TIEMPO DEL CICLO -->
+  <!-- LINEA DE TIEMPO DEL CICLO -->
   <section id="timeline" class="panel">
     <div class="tlCab">
-      <b>⏳ Línea de tiempo del ciclo (clic para revisar un día; el futuro es proyección)</b>
+      <b>⏳ Linea de tiempo del ciclo (clic para revisar un dia; el futuro es proyeccion)</b>
       <span id="tlInfo" class="badge ok"></span>
       <button id="btnVivo" class="naranja" hidden>↩ Volver a modo en vivo</button>
     </div>
