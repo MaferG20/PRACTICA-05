@@ -1,0 +1,5 @@
+# Todas las rutas /api/... se atienden en index.php (FlightPHP)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

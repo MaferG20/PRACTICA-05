@@ -1,0 +1,5 @@
+{
+  "name": "practica05/bioinformatica-api",
+  "description": "API REST (FlightPHP + PDO + MySQL) del Laboratorio Bioinformático de Cultivo",
+  "require": { "php": ">=8.0", "flightphp/core": "^3.0" }
+}

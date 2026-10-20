@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica 05 · Laboratorio Bioinformático de Cultivo (Tulipán)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+  </script>
+</head>
+<body>
+
+  <!-- PANEL IZQUIERDO: especie, modelo, parámetros genéticos y ambientales -->
+  <aside id="panelIzq" class="panel">
+    <header class="cab">
+      <div><b>🌷 Lab Bioinformático</b><small>P05 · Cultivo de Tulipán</small></div>
+      <span id="badgeDb" class="badge">…</span>
+    </header>
+
+    <div class="tabs" id="tabsEsc">
+      <button data-esc="A" class="on">Escenario A</button>
+      <button data-esc="B" hidden>Escenario B</button>
+    </div>
+
+    <label class="campo">Especie (catálogo MySQL)<select id="selEspecie"></select></label>
+    <label class="campo">Modelo matemático de crecimiento<select id="selModelo"></select></label>
+
+    <h4 id="tituloParams">Parámetros genéticos y ambientales (A)</h4>
+    <div id="sliders"></div>
+    <label class="chk"><input type="checkbox" id="chkTermo" checked> Termostato por fase (cálido → frío → templado)</label>
+
+    <h4>Simulación</h4>
+    <div id="slidersGlobales"></div>
+    <label class="chk ab"><input type="checkbox" id="chkAB"> Activar comparativa A/B (A vs B)</label>
+    <label class="chk"><input type="checkbox" id="chkCorte"> Corte de maceta (ver bulbo y raíces)</label>
+
+    <div class="botones">
+      <button id="btnPausa" class="verde">⏸ Pausar</button>
+      <button id="btnReiniciar" class="verde">↺ Reiniciar</button>
+      <button id="btnGuardar" class="azul">💾 Guardar en MySQL</button>
+      <button id="btnReportes" class="violeta">📊 Reportes / Historial</button>
+      <button id="btnCaptura" class="gris">📷 Captura PNG</button>
+      <button id="btnCamara" class="gris">🎥 Restablecer cámara</button>
+    </div>
+  </aside>
+
+  <!-- PANEL DERECHO: KPIs, estrés, decisiones, gráfica, A/B, parte seleccionada -->
+  <aside id="panelDer" class="panel">
+    <div class="faseTag"><span id="faseNombre">—</span><small id="escVista">Escenario A</small></div>
+    <div class="kpis">
+      <div><small>Día</small><b id="kDia">0</b></div>
+      <div><small>Altura (u)</small><b id="kAlt">0</b></div>
+      <div><small>Biomasa (g)</small><b id="kBio">0</b></div>
+      <div><small>Hojas / Bulbillos</small><b id="kHojas">0 / 0</b></div>
+      <div><small>ICR (g/g·día)</small><b id="kIcr">0</b></div>
+      <div><small>Días a cosecha</small><b id="kCos">—</b></div>
+    </div>
+
+    <div id="barras"></div>
+
+    <section class="decision" id="boxDecision">
+      <h5>🧠 Motor de Toma de Decisiones</h5>
+      <div id="accionPrincipal" class="accion">—</div>
+      <ul id="listaDecisiones"></ul>
+    </section>
+
+    <section id="boxAB" hidden>
+      <h5>⚖️ Comparativa A/B <small>(proyección a fin de ciclo)</small></h5>
+      <table class="mini" id="tablaAB"></table>
+      <div id="ganadorAB" class="ganador"></div>
+    </section>
+
+    <section>
+      <h5>📈 Curvas de crecimiento y estrés</h5>
+      <div class="graf"><canvas id="grafica"></canvas></div>
+    </section>
+
+    <section id="boxParte">
+      <h5>🔎 Parte seleccionada</h5>
+      <p id="parteVacio" class="suave">Haz clic en una hoja, el tallo, la flor, el bulbo o la maceta.</p>
+      <div id="parteDatos" hidden></div>
+    </section>
+
+    <section class="modeloInfo">
+      <h5 id="modeloNombre">—</h5>
+      <p id="modeloDesc"></p>
+    </section>
+  </aside>
+
+  <!-- LÍNEA DE TIEMPO DEL CICLO -->
+  <section id="timeline" class="panel">
+    <div class="tlCab">
+      <b>⏳ Línea de tiempo del ciclo (clic para revisar un día; el futuro es proyección)</b>
+      <span id="tlInfo" class="badge ok"></span>
+      <button id="btnVivo" class="naranja" hidden>↩ Volver a modo en vivo</button>
+    </div>
+    <div id="tlPista"><div id="tlSegs"></div><div id="tlFuturo"></div><div id="tlCursor"></div></div>
+    <div id="tlLeyenda"></div>
+  </section>
+
+  <div id="toast" hidden></div>
+
+  <!-- MODAL (guardar / reportes / historial) -->
+  <div id="modal" hidden><div class="caja"><button id="cerrarModal" class="cerrar">✕</button><div id="modalCont"></div></div></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
